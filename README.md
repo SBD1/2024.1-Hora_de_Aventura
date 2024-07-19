@@ -1,25 +1,29 @@
 # 2024.1-Hora_de_Aventura
 
 <div align="center"> <img src="docs/Imagens/HoraDeAventura.jpg" height="230" width="auto"/> </div>
-<div align="center">Repositório do trabalho sobre Hora de Aventura para a matéria de Bancos de Dados - 2024.1</div>
+
+## Sobre o projeto
+Repositório dedicado a realização do trabalho sobre a série Hora de Aventura com os conceitos aprendidos na matéria de Bancos de Dados - 2024.1 ministrada na UnB-FGA pelo professor Maurício Serrano.
 
 ## Alunos
 
 | Nome                                                               | Matrícula |
 | :----------------------------------------------------------------- | :-------: |
-| [Ciro Gomes](https://github.com/) |  |
-| [Lucas Macedo Barboza](https://github.com/Luckx98)                 |  |
+| [Ciro Costa de Araujo](https://github.com/)                        | 190011611 |
 | [Luana de Lima Medeiros](https://github.com/LuaMedeiros)           | 190091444 |
+| [Lucas Macedo Barboza](https://github.com/Luckx98)                 | 190091720 |
+
 
 
 <div class="md-typeset__scrollwrap"><div class="md-typeset__table"><table>
     <tbody><tr>
+               <td align="center"><a href="https://github.com/ciro-c"><img onmouseover="opaqImg(this)" onmouseout="normalImg(this)" style="border-radius: 50%; opacity: 1;" src="https://avatars.githubusercontent.com/ciro-c" alt="" width="100px;"><br><sub><b>Ciro Costa</b></sub></a><br><a href="https://github.com/ciro-c"></a></td> 
+                      <td align="center"><a href="https://github.com/LuaMedeiros"><img onmouseover="opaqImg(this)" onmouseout="normalImg(this)" style="border-radius: 50%; opacity: 1;" src="https://avatars.githubusercontent.com/LuaMedeiros" alt="" width="100px;"><br><sub><b>Luana Medeiros</b></sub></a><br><a href="https://github.com/Luckx98"></a></td>  
         <td align="center"><a href="https://github.com/Luckx98"><img onmouseover="opaqImg(this)" onmouseout="normalImg(this)" style="border-radius: 50%; opacity: 1;" src="https://avatars.githubusercontent.com/Luckx98" alt="" width="100px;"><br><sub><b>Lucas Macedo</b></sub></a><br><a href="https://github.com/Luckx98"></a></td> 
-              <td align="center"><a href="https://github.com/LuaMedeiros"><img onmouseover="opaqImg(this)" onmouseout="normalImg(this)" style="border-radius: 50%; opacity: 1;" src="https://avatars.githubusercontent.com/LuaMedeiros" alt="" width="100px;"><br><sub><b>Luana Medeiros</b></sub></a><br><a href="https://github.com/Luckx98"></a></td>  
     </tr> 
 </tbody></table></div></div>  
 
-## Sobre o desenho
+## Sobre o Desenho
 
 ### Personagens Principais:
 - Finn: Um jovem corajoso e aventureiro que veste um chapéu branco com orelhas. Ele é o último humano conhecido e sonha em ser um grande herói.
@@ -34,5 +38,20 @@ A série aborda temas de aventura e amizade, destacando a importância da lealda
 
 "Hora de Aventura" é conhecida por seu estilo de animação vibrante e colorido, com personagens e cenários criativos. A série combina humor leve e absurdo com temas profundos como identidade, perda e moralidade. Com uma narrativa serializada, a história evolui ao longo das temporadas, apresentando arcos de personagens complexos e desenvolvimento de trama contínuo. A série se tornou um fenômeno cultural, influenciando outras obras de animação e ganhando uma base de fãs dedicada, além de ser amplamente aclamada pela crítica por sua originalidade e criatividade. "Hora de Aventura" é uma mistura encantadora de aventuras épicas, comédia e momentos emocionantes, ambientada em um mundo mágico e peculiar que atrai tanto crianças quanto adultos, oferecendo algo único para cada espectador.
 
+## Sobre o Jogo
+
+### Como o jogo funciona?
+
+### Como jogar?
+
+## Apresentações
+
+| Módulo | Link da gravação                                                                                    | Data       |
+| ------ | --------------------------------------------------------------------------------------------------- | ---------- |
+| 1      | [Apresentação Módulo 1]()                                                                           | 22/07/2024 |
 
 
+
+| Versão |  Data  | Descrição | Autor | Revisão  |
+| :----: | :----: | --------- | ------| -------- |
+|  1.0   | 19/07/2024 | Criação do README | [Luana Medeiros](https://github.com/LuaMedeiros)  | [](https://github.com/) |
