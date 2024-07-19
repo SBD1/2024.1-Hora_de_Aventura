@@ -1,6 +1,6 @@
 # 2023.2-Grupo01-StardewValley
 
-<div align="center"> <img src="docs/imagens/hora_de_aventura.png" height="230" width="auto"/> </div>
+<div align="center"> <img src="./docs/imagens/hora_de_aventura.png" height="230" width="auto"/> </div>
 
 <div align="center">Repositório para desenvolvimento de um MUD inspirado em Hora de Aventura da disciplina de SBD1 - 2024.1</div>
 
@@ -28,7 +28,7 @@ A história gira em torno de Lich, um vilão com cara de esqueleto que deseja ac
 ## Entregas
 
 - Módulo 1
- - [Modelo Entidade-Relacionamento](./docs/imagens/hora_de_aventura.png)  
+ - [Modelo Entidade-Relacionamento](./docs/modulo_01/MER_Hora-de-Aventura.md)  
 
 ### Histórico de versões
 
