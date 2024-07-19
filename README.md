@@ -50,7 +50,7 @@ A série aborda temas de aventura e amizade, destacando a importância da lealda
 | ------ | --------------------------------------------------------------------------------------------------- | ---------- |
 | 1      | [Apresentação Módulo 1]()                                                                           | 22/07/2024 |
 
-
+## Histórico de Versão
 
 | Versão |  Data  | Descrição | Autor | Revisão  |
 | :----: | :----: | --------- | ------| -------- |
