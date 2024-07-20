@@ -1,8 +1,10 @@
 site_name: Techdox Doc
 
 nav:
-  - Home: index.md
-  - About: about.md
+  - Projeto: README.md
+  - Modulo 01: 
+    - Diagrama Entidade e Relacionamento (DER): ./docs/modulo_01/DER_Hora-de-Aventura.md
+    - Modelo Entidade e Relacionamento (MER): ./docs/modulo_01/MER_Hora-de-Aventura.md
 
 theme:
   name: 'material'
