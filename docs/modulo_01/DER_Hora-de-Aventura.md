@@ -12,10 +12,10 @@ O Diagrama Entidade Relacionamento (DER) é composto por um conjunto de objetos 
 
 O diagrama fornece uma visão lógica do banco de dados, fornecendo um conceito mais generalizado de como estão estruturados os dados de um sistema.
 
-<!-- 
-<img src= '/docs/imagens/DER_stardew_valley_v2.2.png' />
-
 <div style="text-align: center">
-  <p>Figura 1: DER Stardew Valley</p>
+
+![DER Hora de Aventura](/docs/Imagens/DER_Hora-de-Aventura_v1.0.jpg)
+
+  <p>Figura 1: DER Hora de Aventura</p>
   <p style="margin-top: -1%; font-size: 12px">Fonte: Autores</p>
-</div> -->
+</div>
