@@ -23,26 +23,27 @@ O Modelo Entidade Relacionamento de um bancos de dados é um modelo conceitual q
 - **Habilidade**
 - **Loja**
 - **Missão**
+- **Diálogo**
 - **Região**
 - **Mundo**
-- **NPC’s**
-- **Inimigos**
+- **NPC**
+- **Inimigo**
 
 ## 2. Atributos
 
-- **Jogador**: <ins>id_jogador</ins>, regiao, missao_atual, nome, vida, itens;
+- **Jogador**: <ins>id_jogador</ins>, nome, regiao, missao_atual, vida;
 - **Item**: <ins>id_item</ins>, tipo_item;
-  - **Arma**: id_arma, nome, dano, descricao, durabilidade;
-  - **Vestimenta**: id_vestimenta, nome, descricao, defesa, durabilidade;
-  - **Consumível**: id_consumível, nome, descricao, efeito;
-- **Habilidade**: <ins>id_habilidade</ins>, nome, descricao, dano, efeito, defesa;
+  - **Arma**: id_arma, id_jogador, nome, dano, descricao, durabilidade;
+  - **Vestimenta**: id_vestimenta, id_jogador, nome, descricao, defesa, durabilidade;
+  - **Consumível**: id_consumível, id_jogador, nome, descricao, efeito;
+- **Habilidade**: <ins>id_habilidade</ins>, id_jogador, nome, descricao, dano, efeito, defesa;
 - **Loja**: <ins>id_loja</ins>, nome, descricao, proprietario, regiao;
-- **Missão**: <ins>id_missao</ins>, nome, descricao;
+- **Missão**: <ins>id_missao</ins>, nome, regiao, descricao;
 - **Região**: <ins>id_regiao</ins>, nome, mundo
 - **Mundo**: <ins>id_mundo</ins>, nome
-- **NPC's**: <ins>id_npc</ins>, nome, regiao;
+- **NPC**: <ins>id_npc</ins>, nome, regiao;
 - **Diálogo**: <ins>id_dialogo</ins>, npc, fala;
-- **Inimidos**: <ins>id_inimigo</ins>, nome, descricao, regiao, dano, defesa, vida, drop;
+- **Inimigo**: <ins>id_inimigo</ins>, nome, descricao, regiao, dano, defesa, vida, drop;
 
 ## 3. Relacionamentos
 
