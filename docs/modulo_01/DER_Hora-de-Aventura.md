@@ -3,6 +3,7 @@
 | Versão |    Data    | Descrição                | Autor                                      |
 | :----: | :--------: | ------------------------ | ------------------------------------------ |
 | `1.0`  | 20/07/2024 | Criação do documento DER | [Lucas Macedo](https://github.com/Luckx98) |
+| `1.1`  | 21/07/2024 | Primeira versão do DER   | [Lucas Macedo](https://github.com/Luckx98) |
 
 # Diagrama Entidade-Relacionamento
 
