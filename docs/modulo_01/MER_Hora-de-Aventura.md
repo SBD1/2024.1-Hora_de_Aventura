@@ -1,8 +1,9 @@
 ## Histórico de versões
 
-| Versão |    Data    | Descrição                | Autor                                      |
-| :----: | :--------: | ------------------------ | ------------------------------------------ |
-| `1.0`  | 18/07/2024 | Criação do documento MER | [Lucas Macedo](https://github.com/Luckx98) |
+| Versão |    Data    | Descrição                 | Autor                                      |
+| :----: | :--------: | ------------------------- | ------------------------------------------ |
+| `1.0`  | 18/07/2024 | Criação do documento MER  | [Lucas Macedo](https://github.com/Luckx98) |
+| `1.1`  | 21/07/2024 | Adicao de relacionamentos | [Lucas Macedo](https://github.com/Luckx98) |
 
 # MER - Modelo Entidade Relacionamento
 
