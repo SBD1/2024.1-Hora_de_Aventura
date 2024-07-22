@@ -15,7 +15,7 @@ O diagrama fornece uma visão lógica do banco de dados, fornecendo um conceito 
 
 <div style="text-align: center">
 
-![DER Hora de Aventura](/docs/Imagens/DER_Hora-de-Aventura_v1.0.jpg)
+![DER Hora de Aventura](/docs/Imagens/DER_Hora-de-Aventura_v2.0.jpg)
 
   <p>Figura 1: DER Hora de Aventura</p>
   <p style="margin-top: -1%; font-size: 12px">Fonte: Autores</p>
