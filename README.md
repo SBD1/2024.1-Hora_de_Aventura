@@ -95,4 +95,4 @@ Fechar o terminal ou dar ctrl+c
 
 | Versão |    Data    | Descrição         | Autor                                            | Revisão                 |
 | :----: | :--------: | ----------------- | ------------------------------------------------ | ----------------------- |
-|  1.0   | 19/07/2024 | Criação do README | [Luana Medeiros](https://github.com/LuaMedeiros) | [](https://github.com/) |
+|  1.0   | 19/07/2024 | Criação do README | [Luana Medeiros](https://github.com/LuaMedeiros) | [Ciro Costa](https://github.com/ciro-c) |
