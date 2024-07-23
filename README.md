@@ -89,7 +89,7 @@ Fechar o terminal ou dar ctrl+c
 
 | Módulo | Link da gravação          | Data       |
 | ------ | ------------------------- | ---------- |
-| 1      | [Apresentação Módulo 1]() | 22/07/2024 |
+| 1      | [Apresentação Módulo 1](https://www.youtube.com/watch?v=gWyj5AUVdbY) | 22/07/2024 |
 
 ## Histórico de Versão
 
