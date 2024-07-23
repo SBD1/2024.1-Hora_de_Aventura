@@ -3,7 +3,7 @@
 
 | Versão |  Data  | Descrição  | Autor  |
 | :----: | :-----: | --------- | ------ |
-| `1.0` | 21/07/2024 | Criação do documento MREL | Luana Medeiros |
+| `1.0` | 21/07/2024 | Criação do documento MREL | [Luana Medeiros](https://github.com/LuaMedeiros) |
 
 # Modelo Relacional
 
