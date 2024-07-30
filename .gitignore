@@ -5,3 +5,4 @@ venv/
 **/venv/
 bin/
 **/bin/
+.vscode/
