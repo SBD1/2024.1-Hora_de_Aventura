@@ -16,7 +16,7 @@
 
 | Nome Variável |     Tipo     |         Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    id_arma    |     int      |   Identificador da arma   |       1-500        |          não           |    FK    |                   |
+|    id_arma    |     int      |   Identificador da arma   |       1-500        |          não           |  PK, FK  |                   |
 |  id_jogador   |     int      | Identificador do jogador  |       1-500        |          sim           |    FK    |                   |
 |     nome      | varchar[50]  |       Nome da arma        |      a-z, A-Z      |          não           |          |                   |
 |     dano      |     int      |    Quantidade de dano     |       1-200        |          não           |          |                   |
@@ -31,7 +31,7 @@
 
 | Nome Variável |     Tipo     |          Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id_consumivel |     int      | Identificador do consumível |       1-500        |          não           |    FK    |                   |
+| id_consumivel |     int      | Identificador do consumível |       1-500        |          não           |  PK, FK  |                   |
 |  id_jogador   |     int      |  Identificador do jogador   |       1-500        |          sim           |    FK    |                   |
 |     nome      | varchar[50]  |     Nome do consumível      |      a-z, A-Z      |          não           |          |                   |
 |   descricao   | varchar[150] |   Descrição do consumível   |      a-z, A-Z      |          sim           |          |                   |
@@ -45,9 +45,9 @@
 
 | Nome Variável |    Tipo     |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :----------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id_regiao   |     int     | Identificador do diálogo |       1-500        |          não           |    PK    |                   |
+|  id_dialogo   |     int     | Identificador do diálogo |       1-500        |          não           |    PK    |                   |
 |     nome      |     int     | Npc que possui o diálogo |       1-500        |          não           |    FK    |                   |
-|     fala      | varchar[50] |   Testo que o npc fala   |      a-z, A-Z      |          sim           |          |                   |
+|     fala      | varchar[50] |   Texto que o npc fala   |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Habilidade
 
@@ -99,13 +99,13 @@
 
 #### Observação: Essa tabela possui chave estrangeira das entidades `Região, Missão, Item`.
 
-| Nome Variável |     Tipo     |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :----------: | :---------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id_jogador   |     int      |   Identificador do jogador    |       1-500        |          não           |    PK    |                   |
-|     nome      | varchar[50]  |        Nome do jogador        |      a-z, A-Z      |          não           |          |                   |
-|    regiao     |     int      |    Identificador da região    |       1-500        |          não           |    FK    |                   |
-| missao_atual  |     int      | Identificador da missão atual |       1-500        |          sim           |    FK    |                   |
-|     vida      | varchar[100] |      Quantidade de vida       |      a-z, A-Z      |          não           |          |                   |
+| Nome Variável |    Tipo     |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :---------: | :---------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|  id_jogador   |     int     |   Identificador do jogador    |       1-500        |          não           |    PK    |                   |
+|     nome      | varchar[50] |        Nome do jogador        |      a-z, A-Z      |          não           |          |                   |
+|    regiao     |     int     |    Identificador da região    |       1-500        |          não           |    FK    |                   |
+| missao_atual  |     int     | Identificador da missão atual |       1-500        |          sim           |    FK    |                   |
+|     vida      |     int     |      Quantidade de vida       |       1-500        |          não           |          |                   |
 
 ## Entidade: Loja
 
@@ -142,7 +142,7 @@
 
 | Nome Variável |    Tipo     |       Descrição        | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :--------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id_regiao   |     int     | Identificador do mundo |       1-500        |          não           |    PK    |                   |
+|   id_mundo    |     int     | Identificador do mundo |       1-500        |          não           |    PK    |                   |
 |     nome      | varchar[50] |     Nome do mundo      |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: NPC
@@ -177,7 +177,7 @@
 
 | Nome Variável |     Tipo     |            Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id_vestimenta |     int      |   Identificador da vestimenta   |       1-500        |          não           |    FK    |                   |
+| id_vestimenta |     int      |   Identificador da vestimenta   |       1-500        |          não           |  PK, FK  |                   |
 |  id_jogador   |     int      |    Identificador do jogador     |       1-500        |          sim           |    FK    |                   |
 |     nome      | varchar[50]  |       Nome da vestimenta        |      a-z, A-Z      |          não           |          |                   |
 |   descricao   | varchar[150] |     Descrição da vestimenta     |      a-z, A-Z      |          sim           |          |                   |
