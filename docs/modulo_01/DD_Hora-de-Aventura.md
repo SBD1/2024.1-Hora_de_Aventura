@@ -46,7 +46,7 @@
 | Nome Variável |    Tipo     |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :----------------------: | :----------------: | :--------------------: | :------: | ----------------- |
 |  id_dialogo   |     int     | Identificador do diálogo |       1-500        |          não           |    PK    |                   |
-|     nome      |     int     | Npc que possui o diálogo |       1-500        |          não           |    FK    |                   |
+|      npc      |     int     | Npc que possui o diálogo |       1-500        |          não           |    FK    |                   |
 |     fala      | varchar[50] |   Texto que o npc fala   |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Habilidade
@@ -106,6 +106,7 @@
 |    regiao     |     int     |    Identificador da região    |       1-500        |          não           |    FK    |                   |
 | missao_atual  |     int     | Identificador da missão atual |       1-500        |          sim           |    FK    |                   |
 |     vida      |     int     |      Quantidade de vida       |       1-500        |          não           |          |                   |
+|   qnt_ouro    |     int     |      Quantidade de ouro       |       min. 0       |          sim           |          |                   |
 
 ## Entidade: Loja
 
@@ -123,16 +124,18 @@
 
 ## Entidade: Missão
 
-#### Descrição: A entidade Missão armazena as informações das missões, como o identificador, o seu nome, a região em que a missão se encontra e sua descrição explicando seu funcionamento
+#### Descrição: A entidade Missão armazena as informações das missões, como o identificador, o seu nome, a região em que a missão se encontra, sua descrição explicando seu funcionamento e sua recompensa
 
-#### Observação: Essa tabela possui chave estrangeira das entidades `Região`.
+#### Observação: Essa tabela possui chave estrangeira das entidades `Região, Item`.
 
 | Nome Variável |     Tipo     |         Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
 |   id_missao   |     int      |  Identificador da missão   |       1-500        |          não           |    PK    |                   |
-|     nome      | varchar[50]  |       Nome da missão       |      a-z, A-Z      |          não           |          |                   |
 |    regiao     |     int      | A região que a missão está |       1-500        |          não           |    FK    |                   |
-|   descricao   | varchar[150] |    Descrição da missão     |      a-z, A-Z      |          sim           |          |                   |
+|  recompensa   |     int      |    Recompensa da missao    |       min. 0       |          sim           |          |                   |
+|     nome      | varchar[50]  |       Nome da missão       |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |    Descrição da missão     |      a-z, A-Z      |          nao           |          |                   |
+|   qnt_ouro    |     int      |     Quantidade de outo     |       min. 0       |          sim           |          |                   |
 
 ## Entidade: Mundo
 
@@ -183,3 +186,17 @@
 |   descricao   | varchar[150] |     Descrição da vestimenta     |      a-z, A-Z      |          sim           |          |                   |
 |    defesa     |     int      |      Quantidade de defesa       |       1-200        |          não           |          |                   |
 | durabilidade  |     int      | Quanto de uso a vestimenta dura |       1-200        |          não           |          |                   |
+
+## Entidade: Venda
+
+#### Descrição: A entidade Venda armazena as informações das vendas, como identificador da venda, a loja que está vendendo, o item que está sendo vendido, o nome da loja e o preço do item
+
+#### Observação: Esta tabela possui chave estrangeira da entidade `Loja, Item`.
+
+| Nome Variável |    Tipo     |          Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :---------: | :-------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|   id_venda    |     int     | Identificador da vestimenta |       1-500        |          não           |    PK    |                   |
+|     loja      |     int     |    Identificador da loja    |       1-500        |          nao           |    FK    |                   |
+|     item      |     int     |    Identificador do item    |       1-500        |          não           |    FK    |                   |
+|     nome      | varchar[50] |        Nome da loja         |      a-z, A-Z      |          não           |          |                   |
+|     preco     |     int     |        Preço do item        |       1-500        |          nao           |          |                   |
