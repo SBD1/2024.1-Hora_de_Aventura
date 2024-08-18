@@ -70,12 +70,14 @@ VALUES
     ('Goblin', 1, 5, 2, 20),
     ('Orc', 2, 10, 5, 50),
     ('Esqueleto', 3, 7, 3, 30),
-    ('Zumbi', 4, 8, 4, 40),
+    ('Zumbi', 4, 8, 4, 40);
+
 INSERT INTO
     Item_inventario (id_jogador, id_item, quantidade)
 VALUES
     (1, 1, 1),
-    (1, 2, 1),
+    (1, 2, 1);
+
 INSERT INTO
     Instancia_Inimigo (regiao, inimigo, vida)
 VALUES
