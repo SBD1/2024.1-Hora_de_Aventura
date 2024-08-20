@@ -3,6 +3,7 @@ import os
 import platform
 
 import npc
+import player
 
 class MyCmd(cmd.Cmd):
     prompt = '(mycmd) '
