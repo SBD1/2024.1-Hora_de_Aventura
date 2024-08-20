@@ -16,12 +16,23 @@
 
 | Nome Variável |     Tipo     |         Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|    id_arma    |     int      |   Identificador da arma   |       1-500        |          não           |    FK    |                   |
+|    id_arma    |     int      |   Identificador da arma   |       1-500        |          não           |  PK, FK  |                   |
 |  id_jogador   |     int      | Identificador do jogador  |       1-500        |          sim           |    FK    |                   |
 |     nome      | varchar[50]  |       Nome da arma        |      a-z, A-Z      |          não           |          |                   |
 |     dano      |     int      |    Quantidade de dano     |       1-200        |          não           |          |                   |
 |   descricao   | varchar[150] |     Descrição da arma     |      a-z, A-Z      |          sim           |          |                   |
 | durabilidade  |     int      | Quanto de uso a arma dura |       1-200        |          não           |          |                   |
+
+## Entidade: Caminhos
+
+#### Descrição: A entidade Caminhos armazena as informações dos caminhos que o jogador pode seguir, como a região de origem e a região de destino.
+
+#### Observação: Esta tabela possui duas chave estrangeira da entidade `Regiao`.
+
+| Nome Variável  | Tipo |    Descrição    | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :------------: | :--: | :-------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|     regiao     | int  | Região de saída |       1-500        |          não           |    FK    |                   |
+| regiao_destino | int  | Região a seguir |       1-500        |          não           |    FK    |                   |
 
 ## Entidade: Consumível
 
@@ -31,7 +42,7 @@
 
 | Nome Variável |     Tipo     |          Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id_consumivel |     int      | Identificador do consumível |       1-500        |          não           |    FK    |                   |
+| id_consumivel |     int      | Identificador do consumível |       1-500        |          não           |  PK, FK  |                   |
 |  id_jogador   |     int      |  Identificador do jogador   |       1-500        |          sim           |    FK    |                   |
 |     nome      | varchar[50]  |     Nome do consumível      |      a-z, A-Z      |          não           |          |                   |
 |   descricao   | varchar[150] |   Descrição do consumível   |      a-z, A-Z      |          sim           |          |                   |
@@ -45,9 +56,9 @@
 
 | Nome Variável |    Tipo     |        Descrição         | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :----------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id_regiao   |     int     | Identificador do diálogo |       1-500        |          não           |    PK    |                   |
-|     nome      |     int     | Npc que possui o diálogo |       1-500        |          não           |    FK    |                   |
-|     fala      | varchar[50] |   Testo que o npc fala   |      a-z, A-Z      |          sim           |          |                   |
+|  id_dialogo   |     int     | Identificador do diálogo |       1-500        |          não           |    PK    |                   |
+|      npc      |     int     | Npc que possui o diálogo |       1-500        |          não           |    FK    |                   |
+|     fala      | varchar[50] |   Texto que o npc fala   |      a-z, A-Z      |          sim           |          |                   |
 
 ## Entidade: Habilidade
 
@@ -99,13 +110,14 @@
 
 #### Observação: Essa tabela possui chave estrangeira das entidades `Região, Missão, Item`.
 
-| Nome Variável |     Tipo     |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
-| :-----------: | :----------: | :---------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|  id_jogador   |     int      |   Identificador do jogador    |       1-500        |          não           |    PK    |                   |
-|     nome      | varchar[50]  |        Nome do jogador        |      a-z, A-Z      |          não           |          |                   |
-|    regiao     |     int      |    Identificador da região    |       1-500        |          não           |    FK    |                   |
-| missao_atual  |     int      | Identificador da missão atual |       1-500        |          sim           |    FK    |                   |
-|     vida      | varchar[100] |      Quantidade de vida       |      a-z, A-Z      |          não           |          |                   |
+| Nome Variável |    Tipo     |           Descrição           | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :---------: | :---------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|  id_jogador   |     int     |   Identificador do jogador    |       1-500        |          não           |    PK    |                   |
+|     nome      | varchar[50] |        Nome do jogador        |      a-z, A-Z      |          não           |          |                   |
+|    regiao     |     int     |    Identificador da região    |       1-500        |          não           |    FK    |                   |
+| missao_atual  |     int     | Identificador da missão atual |       1-500        |          sim           |    FK    |                   |
+|     vida      |     int     |      Quantidade de vida       |       1-500        |          não           |          |                   |
+|   qnt_ouro    |     int     |      Quantidade de ouro       |       min. 0       |          sim           |          |                   |
 
 ## Entidade: Loja
 
@@ -123,16 +135,18 @@
 
 ## Entidade: Missão
 
-#### Descrição: A entidade Missão armazena as informações das missões, como o identificador, o seu nome, a região em que a missão se encontra e sua descrição explicando seu funcionamento
+#### Descrição: A entidade Missão armazena as informações das missões, como o identificador, o seu nome, a região em que a missão se encontra, sua descrição explicando seu funcionamento e sua recompensa
 
-#### Observação: Essa tabela possui chave estrangeira das entidades `Região`.
+#### Observação: Essa tabela possui chave estrangeira das entidades `Região, Item`.
 
 | Nome Variável |     Tipo     |         Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
 |   id_missao   |     int      |  Identificador da missão   |       1-500        |          não           |    PK    |                   |
-|     nome      | varchar[50]  |       Nome da missão       |      a-z, A-Z      |          não           |          |                   |
 |    regiao     |     int      | A região que a missão está |       1-500        |          não           |    FK    |                   |
-|   descricao   | varchar[150] |    Descrição da missão     |      a-z, A-Z      |          sim           |          |                   |
+|  recompensa   |     int      |    Recompensa da missao    |       min. 0       |          sim           |          |                   |
+|     nome      | varchar[50]  |       Nome da missão       |      a-z, A-Z      |          não           |          |                   |
+|   descricao   | varchar[150] |    Descrição da missão     |      a-z, A-Z      |          nao           |          |                   |
+|   qnt_ouro    |     int      |     Quantidade de outo     |       min. 0       |          sim           |          |                   |
 
 ## Entidade: Mundo
 
@@ -142,7 +156,7 @@
 
 | Nome Variável |    Tipo     |       Descrição        | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :---------: | :--------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-|   id_regiao   |     int     | Identificador do mundo |       1-500        |          não           |    PK    |                   |
+|   id_mundo    |     int     | Identificador do mundo |       1-500        |          não           |    PK    |                   |
 |     nome      | varchar[50] |     Nome do mundo      |      a-z, A-Z      |          não           |          |                   |
 
 ## Entidade: NPC
@@ -177,9 +191,23 @@
 
 | Nome Variável |     Tipo     |            Descrição            | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
 | :-----------: | :----------: | :-----------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
-| id_vestimenta |     int      |   Identificador da vestimenta   |       1-500        |          não           |    FK    |                   |
+| id_vestimenta |     int      |   Identificador da vestimenta   |       1-500        |          não           |  PK, FK  |                   |
 |  id_jogador   |     int      |    Identificador do jogador     |       1-500        |          sim           |    FK    |                   |
 |     nome      | varchar[50]  |       Nome da vestimenta        |      a-z, A-Z      |          não           |          |                   |
 |   descricao   | varchar[150] |     Descrição da vestimenta     |      a-z, A-Z      |          sim           |          |                   |
 |    defesa     |     int      |      Quantidade de defesa       |       1-200        |          não           |          |                   |
 | durabilidade  |     int      | Quanto de uso a vestimenta dura |       1-200        |          não           |          |                   |
+
+## Entidade: Venda
+
+#### Descrição: A entidade Venda armazena as informações das vendas, como identificador da venda, a loja que está vendendo, o item que está sendo vendido, o nome da loja e o preço do item
+
+#### Observação: Esta tabela possui chave estrangeira da entidade `Loja, Item`.
+
+| Nome Variável |    Tipo     |          Descrição          | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :-----------: | :---------: | :-------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|   id_venda    |     int     | Identificador da vestimenta |       1-500        |          não           |    PK    |                   |
+|     loja      |     int     |    Identificador da loja    |       1-500        |          nao           |    FK    |                   |
+|     item      |     int     |    Identificador do item    |       1-500        |          não           |    FK    |                   |
+|     nome      | varchar[50] |        Nome da loja         |      a-z, A-Z      |          não           |          |                   |
+|     preco     |     int     |        Preço do item        |       1-500        |          nao           |          |                   |
