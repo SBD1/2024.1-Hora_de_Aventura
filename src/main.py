@@ -12,7 +12,7 @@ class MyCmd(cmd.Cmd):
 
     def __init__(self) -> None:
         conn = Conection()
-        self.player = player.Player(conn.cursor)
+        self.player = player.Player(conn)
 
     def printMenuAjuda(self):
       print("Bem vindo a Hora de Aventura")
