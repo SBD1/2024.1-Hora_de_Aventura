@@ -8,11 +8,7 @@ import player
 
 class MyCmd(cmd.Cmd):
     prompt = '(mycmd) '
-    trueLastCmd = ''
-
-    def __init__(self) -> None:
-        conn = Conection()
-        self.player = player.Player(conn)
+    trueLastCmd = ''        
 
     def printMenuAjuda(self):
       print("Bem vindo a Hora de Aventura")
@@ -23,6 +19,8 @@ class MyCmd(cmd.Cmd):
       print("help - Menu de ajuda")
 
     def preloop(self):
+      conn = Conection()
+      self.player = player.Player(conn)
       self.printMenuAjuda()
 
     def default(self, line):
