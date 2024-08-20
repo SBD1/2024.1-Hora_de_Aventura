@@ -23,6 +23,12 @@ CREATE TABLE IF NOT EXISTS Arma (
     FOREIGN KEY (id_jogador) REFERENCES Jogador (id_jogador)
 );
 
+CREATE TABLE IF NOT EXISTS Caminhos (
+    regiao int NOT NULL,
+    regiao_destino int NOT NULL,
+    FOREIGN KEY (regiao) REFERENCES Regiao (id_regiao) FOREIGN KEY (regiao_destino) REFERENCES Regiao (id_regiao)
+);
+
 CREATE TABLE IF NOT EXISTS Consumivel (
     id_consumivel SERIAL PRIMARY KEY,
     id_jogador int,

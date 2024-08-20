@@ -23,6 +23,17 @@
 |   descricao   | varchar[150] |     Descrição da arma     |      a-z, A-Z      |          sim           |          |                   |
 | durabilidade  |     int      | Quanto de uso a arma dura |       1-200        |          não           |          |                   |
 
+## Entidade: Caminhos
+
+#### Descrição: A entidade Caminhos armazena as informações dos caminhos que o jogador pode seguir, como a região de origem e a região de destino.
+
+#### Observação: Esta tabela possui duas chave estrangeira da entidade `Regiao`.
+
+| Nome Variável  | Tipo |    Descrição    | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :------------: | :--: | :-------------: | :----------------: | :--------------------: | :------: | ----------------- |
+|     regiao     | int  | Região de saída |       1-500        |          não           |    FK    |                   |
+| regiao_destino | int  | Região a seguir |       1-500        |          não           |    FK    |                   |
+
 ## Entidade: Consumível
 
 #### Descrição: A entidade Consumível armazena as características do item que é consumível pelo usuário, como identificador de consumível, seu nome, sua descrição e o efeito que possui;

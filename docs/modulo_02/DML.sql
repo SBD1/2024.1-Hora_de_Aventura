@@ -25,6 +25,13 @@ VALUES
     ('Besta', 10, 100);
 
 INSERT INTO
+    Caminhos (regiao, regiao_destino)
+VALUES
+    (1, 2),
+    (2, 3),
+    (3, 1);
+
+INSERT INTO
     Consumivel (nome, efeito)
 VALUES
     ('Poção de Vida', 'Cura 50 de vida'),
