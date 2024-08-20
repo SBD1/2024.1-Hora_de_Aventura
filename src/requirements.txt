@@ -1,5 +1,6 @@
 importlib_metadata==8.2.0
 platformdirs==4.2.2
+psycopg2-binary==2.9.9
 tomli==2.0.1
 yapf==0.40.2
 zipp==3.19.2
