@@ -8,6 +8,6 @@ class Conection:
        return Conection.__instance
 
    def __init__(self):
-    conn = psycopg2.connect(database="db_name", host="db_host",user="db_user",password="db_pass",port="db_port")
+    conn = psycopg2.connect(database="test", host="localhost",user="user",password="password",port="5432")
     self.cursor = conn.cursor()
 
