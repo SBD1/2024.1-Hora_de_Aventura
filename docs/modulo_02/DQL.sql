@@ -8,7 +8,6 @@
 -- | Atualizacao : 19/08/2024 | Autor(es): Lucas Macedo e Luana Medeiros            |  --
 --                            | Descricao: Inclusão das consultas do banco de dados |  --
 -- --------------------------------------------------------------------------------------
-BEGIN TRANSACTION;
 
 -- Consulta de Nome e Dano da Tabela Arma
 SELECT
@@ -139,5 +138,3 @@ FROM
 WHERE
     Item.tipo_item = 'Consumível'
     AND Loja.id_loja = 1;
-
-COMMIT;

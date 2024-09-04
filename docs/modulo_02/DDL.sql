@@ -10,7 +10,6 @@
 -- | Atualizacao : 14/08/2024 | Autor(es): Lucas Macedo                       |      --
 --                            | Descricao: Atualizaçao das tabelas   |      --
 -- --------------------------------------------------------------------------------------
-BEGIN TRANSACTION;
 
 CREATE TABLE IF NOT EXISTS Arma (
     id_arma SERIAL PRIMARY KEY,
@@ -178,5 +177,3 @@ ALTER TABLE Vestimenta ADD CONSTRAINT "FK_23" FOREIGN KEY (id_jogador) REFERENCE
 
 ALTER TABLE Venda ADD CONSTRAINT "FK_24" FOREIGN KEY (loja) REFERENCES Loja (id_loja);
 ALTER TABLE Venda ADD CONSTRAINT "FK_25" FOREIGN KEY (item) REFERENCES Item (id_item);
-
-COMMIT;
