@@ -10,4 +10,14 @@ class Conection:
    def __init__(self):
     conn = psycopg2.connect(database="test", host="localhost",user="user",password="password",port="5432")
     self.cursor = conn.cursor()
+   
+   def create_new_character(connection, nome):
+      cursor = connection.cursor()
+
+      querry = "INSERT INTO Jogador (nome, regiao, missao_atual, vida, qntOuro) VALUES ('%s', 2, 0, 500, 0)" % (nome)
+
+      cursor.execute(querry)
+      
+      connection.commit()
+      cursor.close()
 
