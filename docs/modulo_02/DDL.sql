@@ -9,6 +9,8 @@
 --                            | Descricao: Inclusão das linhas de CREATE TABLE  |      --
 -- | Atualizacao : 14/08/2024 | Autor(es): Lucas Macedo                       |      --
 --                            | Descricao: Atualizaçao das tabelas   |      --
+-- | Atualizacao : 05/09/2024 | Autor(es): Ciro Costa de Araújo | --
+--                            | Descricao: Atualizacao de formatacao das tabelas | --
 -- --------------------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS Arma (
@@ -111,15 +113,13 @@ CREATE TABLE IF NOT EXISTS Mundo (
 CREATE TABLE IF NOT EXISTS NPC (
     id_npc SERIAL PRIMARY KEY,
     nome char(50) NOT NULL,
-    regiao int NOT NULL,
-
+    regiao int NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Regiao (
     id_regiao SERIAL PRIMARY KEY,
     nome char(50) NOT NULL,
-    mundo int NOT NULL,
-    FOREIGN KEY (mundo) REFERENCES Mundo (id_mundo)
+    mundo int NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Vestimenta (
@@ -177,3 +177,5 @@ ALTER TABLE Vestimenta ADD CONSTRAINT "FK_23" FOREIGN KEY (id_jogador) REFERENCE
 
 ALTER TABLE Venda ADD CONSTRAINT "FK_24" FOREIGN KEY (loja) REFERENCES Loja (id_loja);
 ALTER TABLE Venda ADD CONSTRAINT "FK_25" FOREIGN KEY (item) REFERENCES Item (id_item);
+
+ALTER TABLE Regiao ADD CONSTRAINT "FK_26" FOREIGN KEY (mundo) REFERENCES Mundo (id_mundo);
