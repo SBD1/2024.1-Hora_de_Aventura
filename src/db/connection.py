@@ -10,4 +10,6 @@ class Conection:
    def __init__(self):
     conn = psycopg2.connect(database="test", host="localhost",user="user",password="password",port="5432")
     self.cursor = conn.cursor()
+    self.commit = conn.commit
+    self.rollback = conn.rollback
 
