@@ -5,6 +5,7 @@ import platform
 from db.connection import Conection
 import npc
 import player
+from db.seed import create_tables  # Importe a função para criar as tabelas
 
 class MyCmd(cmd.Cmd):
     prompt = '(mycmd) '
@@ -15,7 +16,7 @@ class MyCmd(cmd.Cmd):
       print("Para selecionar a opção basta digitar os comandos citados\n\n\n")
       
       print("criar - Criar um novo personagem")
-      print("carregar personagem - Carregar um personagem existente")
+      print("carregar - Carregar um personagem existente")
       print("help - Menu de ajuda\n\n\n")
       
       while True:
@@ -36,27 +37,13 @@ class MyCmd(cmd.Cmd):
       self.conn = Conection()
       self.player = player.Player(self.conn)
       self.printMenuAjuda()
-
-    def default(self, line):
-        if self.trueLastCmd == 'criar':
-          self.create_new_character()
-          return None 
-        if self.trueLastCmd == 'move':
-          self.player.moveToSpace(self,line)
-          return None 
-        self.trueLastCmd = ''
         
     def create_new_character(self):
         new_name = input('Digite o nome do seu personagem: ')
         if new_name == '':
             print("Não é possível registrar um nome vazio!")
             return None
-        # self.player = Conection.get_character(self.connection, new_name)
-        # while(self.player.idJogador != -1):
-        #     new_name = input('Nome já registrado, escolha outro:')
-        #     self.player = DataBase.get_character(self.connection, new_name)
-        ## Fazer a conexão com o banco de dados AQUI
-        Conection.create_new_character(self.conn, new_name)
+        self.conn.create_new_character(new_name)
 
     def precmd(self, line):
         if platform.system() == 'Windows':
@@ -81,4 +68,5 @@ class MyCmd(cmd.Cmd):
 
 
 if __name__ == '__main__':
+    create_tables()
     MyCmd().cmdloop()

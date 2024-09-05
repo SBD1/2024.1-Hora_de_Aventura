@@ -1,22 +1,37 @@
-
 from db.connection import Conection
 
-conn = Conection()
-c = conn.cursor
+def create_tables(script_path='../sql/DDL.sql'):
+    conn = Conection()
+    if conn.conn is not None:
+        cursor = conn.cursor
+        try:
+            execute_sql_script(cursor, script_path)
+            print("Tabelas criadas com sucesso!")
+        except Exception as e:
+            print(f"Erro ao criar tabelas: {e}")
+        finally:
+            cursor.close()
+    else:
+        print("Falha ao conectar ao banco de dados.")
+    
 
-fd = open('../docs/modulo_02/DDL.sql', 'r')
-sqlFile = fd.read()
-fd.close()
+def execute_sql_script(cursor, script_path):
+    with open(script_path, 'r') as file:
+        sql_script = file.read()
+        
+    # Divide o script em comandos individuais
+    sql_commands = sql_script.split(';')
 
-# all SQL commands (split on ';')
-sqlCommands = sqlFile.split(';')
+    for command in sql_commands:
+        # Ignora comandos vazios
+        if command.strip():
+            try:
+                cursor.execute(command)
+            except Exception as e:
+                print(f"Erro ao executar comando: {e}")
+                cursor.connection.rollback()
+            else:
+                cursor.connection.commit()
 
-# Execute every command from the input file
-for command in sqlCommands:
-    # This will skip and report errors
-    # For example, if the tables do not yet exist, this will skip over
-    # the DROP TABLE commands
-    try:
-        c.execute(command)
-    except:
-        print("Command skipped")
+if __name__ == "__main__":
+    create_tables()
