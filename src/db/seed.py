@@ -31,7 +31,7 @@ def create_tables():
             # print("Tabelas criadas com sucesso!")
             
              # Insere dados
-            # execute_sql_script(cursor, dml_arquivo)
+            execute_sql_script(cursor, dml_arquivo)
             # print("Dados inseridos com sucesso!")
         except Exception as e:
             print(f"Erro ao criar tabelas: {e}")
