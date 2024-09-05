@@ -5,7 +5,7 @@ class Player():
   playerId=1 #Hardcoded por enquanto
   spaceOptions={}
 
-  def __init__(self,db_coonection: connection.Conection) -> None:
+  def __init__(self,db_coonection: connection.Connection) -> None:
         self.cursor = db_coonection.cursor 
   
   def moveToSpace(self, cmdSelf,optionNumber):
