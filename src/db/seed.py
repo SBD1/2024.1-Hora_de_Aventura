@@ -1,12 +1,38 @@
-from db.connection import Conection
+from db.connection import Connection
 
-def create_tables(script_path='../sql/DDL.sql'):
-    conn = Conection()
-    if conn.conn is not None:
-        cursor = conn.cursor
+import os
+
+def verify_tables():
+    caminho = 'sql'
+    ddl_arquivo = caminho + '/DDL.sql'
+    dml_arquivo = caminho + '/DML.sql'
+    
+    
+    if not os.path.exists(caminho): 
+        os.makedirs(caminho)
+
+    if not os.path.exists(ddl_arquivo): 
+        open(ddl_arquivo, 'w')
+        
+    if not os.path.exists(dml_arquivo): 
+        open(dml_arquivo, 'w')
+
+    return ddl_arquivo, dml_arquivo
+
+def create_tables():
+    #TODO: Esta dando erro ao inserir ou fazer update nas tabelas, consertar isso
+    ddl_arquivo, dml_arquivo = verify_tables()
+    
+    conn_database = Connection()
+    if conn_database.conn is not None:
+        cursor = conn_database.cursor
         try:
-            execute_sql_script(cursor, script_path)
-            print("Tabelas criadas com sucesso!")
+            execute_sql_script(cursor, ddl_arquivo)
+            # print("Tabelas criadas com sucesso!")
+            
+             # Insere dados
+            execute_sql_script(cursor, dml_arquivo)
+            # print("Dados inseridos com sucesso!")
         except Exception as e:
             print(f"Erro ao criar tabelas: {e}")
         finally:
