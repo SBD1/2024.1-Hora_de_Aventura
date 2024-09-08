@@ -39,28 +39,51 @@ class Connection:
          self.conn.rollback()
 
    def get_character(self, name):
-        cursor = self.conn.cursor()
+      cursor = self.conn.cursor()
         
-        query = """SELECT id_jogador FROM Jogador
+      query = """SELECT id_jogador FROM Jogador
                     WHERE( Jogador.nome = '%s') 
                     """ % (name)
          
-        cursor.execute(query)
-        rtn = cursor.fetchone()
-        if(rtn == None):
-            cursor.close()
-            return Jogador(-1, -1, -1, -1, -1, -1)
-        else:
-            query = """SELECT * FROM Jogador
+      cursor.execute(query)
+      rtn = cursor.fetchone()
+      if(rtn == None):
+         cursor.close()
+         return CurrentPlayer(-1, -1, -1, -1, -1, -1)
+      else:
+         query = """SELECT * FROM Jogador
                     WHERE( Jogador.nome = '%s') 
                     """ % (name)
                     
-            cursor.execute(query)
-            id_jogador, nome, regiao, missao_atual, vida, qnt_ouro = cursor.fetchone()
+         cursor.execute(query)
+         id_jogador, nome, regiao, missao_atual, vida, qnt_ouro = cursor.fetchone()
 
-            cursor.close()
-            return Jogador(id_jogador, nome, regiao, missao_atual, vida, qnt_ouro)
+         cursor.close()
+         return CurrentPlayer(id_jogador, nome, regiao, missao_atual, vida, qnt_ouro)
          
+   def get_current_region(self, id_jogador):
+      cursor = self.conn.cursor()
+      queryOne = """
+         SELECT j.regiao, r.nome FROM Jogador j 
+         INNER JOIN Regiao r ON j.regiao = r.id_regiao 
+         WHERE id_jogador=%s
+            """ % (id_jogador)
+      cursor.execute(queryOne)
+      region = cursor.fetchone()
+     
+      cursor.close()
+      return region
+
+   def get_available_regions(self):
+      cursor = self.conn.cursor()
+      query = """
+         SELECT id_regiao, nome FROM Regiao
+         """
+      cursor.execute(query)
+      regions = cursor.fetchall()
+      cursor.close()
+      return regions
+   
    def close(self):
       self.conn.close()
 

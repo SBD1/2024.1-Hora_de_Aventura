@@ -1,15 +1,25 @@
 from db import connection
+from classes import *
 
 class Player():
   current_region=""
+  current_player={}
   playerId=1 #Hardcoded por enquanto
   spaceOptions={}
+  
 
   def __init__(self,db_connection: connection.Connection) -> None:
-        self.cursor = db_connection.cursor
-        self.commit = db_connection.commit
-        self.rollback = db_connection.rollback
+    self.db_connection = db_connection
+    self.cursor = db_connection.cursor
+    self.commit = db_connection.commit
+    self.rollback = db_connection.rollback
   
+  def getCurrentPlayer(self, nome):
+    player = self.db_connection.get_character(nome)
+    self.current_player = CurrentPlayer(player.id_jogador, player.nome, player.regiao, player.missao_atual, player.vida, player.qnt_ouro)
+  
+    return player
+    
   def moveToSpace(self, cmdSelf,optionNumber):
     if int(optionNumber) == 0:
       return None
@@ -26,14 +36,14 @@ class Player():
     return self.getCurrentPosition()
   
   def getCurrentPosition(self):
-    self.cursor.execute("SELECT j.regiao, r.nome FROM Jogador j INNER JOIN Regiao r ON j.regiao = r.id_regiao WHERE id_jogador=%s;",[self.playerId])
-    currentPosition = self.cursor.fetchone()
-    self.current_region = currentPosition[1].strip()
-    self.cursor.execute("SELECT r.id_regiao, r.nome FROM Regiao r JOIN Caminhos c ON c.regiao_destino = r.id_regiao WHERE c.regiao=%s;",[currentPosition[0]])
-    print(f"Você esta em {self.current_region}, os destinos disponíveis são:")
+    self.current_region = self.db_connection.get_current_region(self.current_player.id_jogador)
+    return self.current_region[1]
+ 
+  def getAvailableRegions(self): 
+    self.available_regions = self.db_connection.get_available_regions()
+    print("Os destinos disponíveis são:")
     print("0 - Cancelar movimento")
-    for index, row in enumerate(self.cursor.fetchall()):
-        id, nome = row
-        self.spaceOptions[index+1] = id
-        print(f"{index+1} - {nome.strip()}")
+    # TODO: Fazer um loop para printar as opções
+    
+    
 

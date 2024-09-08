@@ -10,6 +10,12 @@ from classes import *
 #import npc
 import player
 
+def clear():
+  if platform.system() == 'Windows':
+    os.system('cls')
+  else:
+    os.system('clear')
+
 class MyCmd(cmd.Cmd):
     prompt = '(mycmd) '
     trueLastCmd = ''        
@@ -26,7 +32,7 @@ class MyCmd(cmd.Cmd):
       
       return ascii_art
 
-    def printMenuAjuda(self):
+    def start(self):
       print(self.artAscii())
       print("Bem vindo a Hora de Aventura")
       
@@ -43,7 +49,7 @@ class MyCmd(cmd.Cmd):
           self.create_new_character()
           break
         if cmd == 'carregar':
-          self.trueLastCmd = 'carregar personagem'
+          self.load_character()
           break
         if cmd == 'help':
           self.do_help()
@@ -52,24 +58,27 @@ class MyCmd(cmd.Cmd):
 
     def preloop(self):
       self.conn = Connection()
-      self.player = player.Player(self.conn)
-      self.printMenuAjuda()
+      self.playerClass = player.Player(self.conn)
+      
+      self.start()
         
     def create_new_character(self):
+        clear()
         new_name = input('Digite o nome do seu personagem: \n\n')
         if new_name == '':
             print("Não é possível registrar um nome vazio!\n")
             return None
           
-        self.jogador = self.conn.get_character(new_name)
+        self.currentPlayer= self.playerClass.getCurrentPlayer(new_name)
         
         print ("Verificando se o nome já está registrado...\n")
-        while(self.jogador.id_jogador != -1):
+        
+        while(self.currentPlayer.id_jogador != -1):
             new_name = input('Nome já registrado, escolha outro:\n')
-            self.jogador = self.conn.get_character(new_name)
+            self.currentPlayer= self.playerClass.getCurrentPlayer(new_name)
      
         self.conn.create_new_character(new_name)
-        self.jogador = self.conn.get_character(new_name)
+        self.currentPlayer= self.playerClass.getCurrentPlayer(new_name)
         
         print(
             f'\nSeja bem vindo(a) ao jogo, {new_name}! (Nâo que isso seja um jogo hahaha)')
@@ -83,16 +92,27 @@ class MyCmd(cmd.Cmd):
             f'Venha, vamos começar a sua jornada!\n')
 
         input('pressione _enter_ para continuar...')
-        self.precmd()
-
-    def precmd(self):
-        if platform.system() == 'Windows':
-            os.system('cls')
-        else:
-            os.system('clear')
-        if self.trueLastCmd == '':
-          self.trueLastCmd = self.lastcmd
-   
+        self.gameplay()
+        
+    def load_character(self):
+      clear()      
+      nome = input('Digite o nome do personagem que deseja carregar ou digite o comando: ')
+      self.currentPlayer= self.playerClass.getCurrentPlayer(nome)
+      while(self.currentPlayer.id_jogador == -1):
+            if nome == 'sair':
+                self.start()
+            nome = input("Jogador não encontrado! digite outro ou sair: ")
+            self.currentPlayer= self.playerClass.getCurrentPlayer(nome)
+      
+      print(
+            f'\nBem vindo de volta, {self.currentPlayer.nome}\n')
+      input('pressione _enter_ para continuar...')
+      self.gameplay()
+        
+    def gameplay(self):
+        clear()
+        self.show_player_info()
+  
     def do_example(self, line):
       self.trueLastCmd = 'example'
       newNpc = npc.Npc()
@@ -100,10 +120,18 @@ class MyCmd(cmd.Cmd):
       print("finished", self.trueLastCmd)
 
     def do_help(self,line):
-      self.printMenuAjuda()
+      self.start()
 
     def do_move(self,line):
-        self.player.getCurrentPosition()
+      self.playerClass.getCurrentPosition(self.currentPlayer.id_jogador)
+             
+    def show_player_info(self):  
+      print(f'Nome: {self.currentPlayer.nome}\n' +
+      f'PV(Pontos de vida): {self.currentPlayer.vida}\n' +
+      f'Quantidade de ouro: {self.currentPlayer.qnt_ouro}\n' +
+      f'Você está em: {self.playerClass.getCurrentPosition()}\n' +
+      f'\n\n'
+      )
 
 
 if __name__ == '__main__':
