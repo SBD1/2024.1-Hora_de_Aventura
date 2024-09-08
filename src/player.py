@@ -5,10 +5,10 @@ class Player():
   playerId=1 #Hardcoded por enquanto
   spaceOptions={}
 
-  def __init__(self,db_coonection: connection.Conection) -> None:
-        self.cursor = db_coonection.cursor
-        self.commit = db_coonection.commit
-        self.rollback = db_coonection.rollback
+  def __init__(self,db_connection: connection.Connection) -> None:
+        self.cursor = db_connection.cursor
+        self.commit = db_connection.commit
+        self.rollback = db_connection.rollback
   
   def moveToSpace(self, cmdSelf,optionNumber):
     if int(optionNumber) == 0:

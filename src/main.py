@@ -7,7 +7,7 @@ from db.connection import Connection # Importe a classe Connection
 from db.seed import create_tables  # Importe a função para criar as tabelas]
 from classes import *
 
-import npc
+#import npc
 import player
 
 class MyCmd(cmd.Cmd):

@@ -1,4 +1,4 @@
-from connection import Connection
+from db.connection import Connection
 
 import os
 
@@ -20,11 +20,10 @@ def verify_tables():
     return ddl_arquivo, dml_arquivo
 
 def create_tables():
-    #TODO: Esta dando erro ao inserir ou fazer update nas tabelas, consertar isso
     ddl_arquivo, dml_arquivo = verify_tables()
     
     conn_database = Connection()
-    if conn_database.conn is not None:
+    if conn_database is not None:
         cursor = conn_database.cursor
         try:
             execute_sql_script(cursor, ddl_arquivo)
@@ -52,7 +51,7 @@ def execute_sql_script(cursor, script_path):
         # Ignora comandos vazios
         if command.strip():
             try:
-                print(command)
+                #print(command)
                 cursor.execute(command)
             except Exception as e:
                 print(f"Erro ao executar comando: {e}")

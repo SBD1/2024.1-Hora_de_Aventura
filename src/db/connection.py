@@ -13,10 +13,10 @@ class Connection:
    def __init__(self):
       if not hasattr(self, 'conn'):
          try:
-            conn = psycopg2.connect(database="test", host="localhost",user="user",password="password",port="5432")
-            self.cursor = conn.cursor()
-            self.commit = conn.commit
-            self.rollback = conn.rollback
+            self.conn = psycopg2.connect(database="test", host="localhost",user="user",password="password",port="5432")
+            self.cursor = self.conn.cursor()
+            self.commit = self.conn.commit
+            self.rollback = self.conn.rollback
          
          except psycopg2.OperationalError as e:
             print(f"Erro ao conectar ao banco de dados: {e}")
@@ -40,7 +40,7 @@ class Connection:
 
    def get_character(self, name):
         cursor = self.conn.cursor()
-
+        
         query = """SELECT id_jogador FROM Jogador
                     WHERE( Jogador.nome = '%s') 
                     """ % (name)

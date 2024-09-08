@@ -117,7 +117,6 @@ CREATE TABLE IF NOT EXISTS Regiao (
     id_regiao SERIAL PRIMARY KEY,
     nome char(50) NOT NULL,
     mundo int NOT NULL,
-    FOREIGN KEY (mundo) REFERENCES Mundo (id_mundo)
 );
 
 CREATE TABLE IF NOT EXISTS Vestimenta (
@@ -261,3 +260,8 @@ ALTER TABLE
     Venda
 ADD
     CONSTRAINT "FK_25" FOREIGN KEY (item) REFERENCES Item (id_item);
+
+ALTER TABLE
+    Regiao
+ADD
+    CONSTRAINT "FK_26" FOREIGN KEY (mundo) REFERENCES Mundo (id_mundo);
