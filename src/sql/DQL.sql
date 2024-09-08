@@ -8,7 +8,6 @@
 -- | Atualizacao : 19/08/2024 | Autor(es): Lucas Macedo e Luana Medeiros            |  --
 --                            | Descricao: Inclusão das consultas do banco de dados |  --
 -- --------------------------------------------------------------------------------------
-
 -- Consulta de Nome e Dano da Tabela Arma
 SELECT
     nome,

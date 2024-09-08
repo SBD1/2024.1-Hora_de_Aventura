@@ -8,8 +8,6 @@
 -- | Atualizacao : 07/08/2024 | Autor(es): Lucas Macedo                         |      --
 --                            | Descricao: Inclusão das linhas de INSERT INTO   |      --
 -- --------------------------------------------------------------------------------------
-BEGIN TRANSACTION;
-
 INSERT INTO
     Arma (nome, dano, durabilidade)
 VALUES
@@ -177,5 +175,3 @@ VALUES
     (2, 2, 90, 'Elmo de brasa'),
     (3, 1, 350, 'Manopla de gelo'),
     (3, 2, 60, 'Botas de neve');
-
-COMMIT;
