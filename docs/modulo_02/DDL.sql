@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS Arma (
     durabilidade int NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Caminhos (
+CREATE TABLE IF NOT EXISTS Caminhos ( 
     regiao int NOT NULL,
     regiao_destino int NOT NULL
 );
@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS Item_inventario (
 );
 
 CREATE TABLE IF NOT EXISTS Instancia_Inimigo (
+    id_instancia_inimigo SERIAL PRIMARY KEY,
     regiao int NOT NULL,
     inimigo int NOT NULL,
     saude int NOT NULL
@@ -179,3 +180,21 @@ ALTER TABLE Venda ADD CONSTRAINT "FK_24" FOREIGN KEY (loja) REFERENCES Loja (id_
 ALTER TABLE Venda ADD CONSTRAINT "FK_25" FOREIGN KEY (item) REFERENCES Item (id_item);
 
 ALTER TABLE Regiao ADD CONSTRAINT "FK_26" FOREIGN KEY (mundo) REFERENCES Mundo (id_mundo);
+
+CREATE OR REPLACE PROCEDURE Ataca_Inimigo (@InstaciaInimigoId int, @Dano int, @IdJogador, int)
+AS
+BEGIN
+    DECLARE @VidaInimigo int
+    DECLARE @Recompensa int
+    SELECT @VidaInimigo = i.saude, @Recompensa = i."drop" FROM Instancia_Inimigo i WHERE i.id_instancia_inimigo = @InstaciaInimigoId;
+
+    IF (@VidaInimigo <= @Dano) 
+        BEGIN
+            INSERT INTO Item_inventario (jogador, item, efeito) VALUES (@IdJogador, @Recompensa, 1);
+            DELETE FROM Instancia_Inimigo WHERE id_instancia_inimigo = @InstaciaInimigoId;
+        END;
+    ELSE 
+        BEGIN
+            UPDATE Instancia_Inimigo SET saude = @VidaInimigo - @Dano WHERE id_instancia_inimigo = @InstaciaInimigoId;
+        END;
+END;

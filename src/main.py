@@ -1,39 +1,22 @@
 import cmd
-import os
-import platform
 from pyfiglet import Figlet
 
 from db.connection import Connection # Importe a classe Connection
 from db.seed import create_tables  # Importe a função para criar as tabelas]
-from classes import *
+from classes_dto import *
+from util import *
 
 #import npc
 import player
 
-def clear():
-  if platform.system() == 'Windows':
-    os.system('cls')
-  else:
-    os.system('clear')
-
 class MyCmd(cmd.Cmd):
     prompt = '(mycmd) '
-    trueLastCmd = ''        
-    
-    def artAscii(self):
-      # Cria uma instância do Figlet
-      figlet = Figlet(font='slant')  # Você pode escolher outros estilos de fonte
-
-      # Texto que você deseja converter
-      text = "Hora de Aventura Mud"
-
-      # Gera o texto em ASCII
-      ascii_art = figlet.renderText(text)
-      
-      return ascii_art
+    trueLastCmd = ''
 
     def start(self):
-      print(self.artAscii())
+      figlet = Figlet(font='slant')
+      text = "Hora de Aventura Mud"
+      print(figlet.renderText(text))
       print("Bem vindo a Hora de Aventura")
       
       print("Para selecionar a opção basta digitar os comandos citados\n\n\n")
@@ -42,27 +25,13 @@ class MyCmd(cmd.Cmd):
       print("carregar - Carregar um personagem existente")
       print("help - Menu de ajuda\n\n\n")
       
-      while True:
-        print("Digite o comando desejado\n")
-        cmd = input()
-        if cmd == 'criar':
-          self.create_new_character()
-          break
-        if cmd == 'carregar':
-          self.load_character()
-          break
-        if cmd == 'help':
-          self.do_help()
-          break
-        print("Comando inválido, tente novamente\n")
-
     def preloop(self):
       self.conn = Connection()
       self.playerClass = player.Player(self.conn)
       
       self.start()
         
-    def create_new_character(self):
+    def do_criar(self, line):
         clear()
         new_name = input('Digite o nome do seu personagem: \n\n')
         if new_name == '':
@@ -92,9 +61,8 @@ class MyCmd(cmd.Cmd):
             f'Venha, vamos começar a sua jornada!\n')
 
         input('pressione _enter_ para continuar...')
-        self.gameplay()
         
-    def load_character(self):
+    def do_carregar(self, line):
       clear()      
       nome = input('Digite o nome do personagem que deseja carregar ou digite o comando: ')
       self.currentPlayer= self.playerClass.getCurrentPlayer(nome)
@@ -107,32 +75,25 @@ class MyCmd(cmd.Cmd):
       print(
             f'\nBem vindo de volta, {self.currentPlayer.nome}\n')
       input('pressione _enter_ para continuar...')
-      self.gameplay()
-        
-    def gameplay(self):
-        clear()
-        self.show_player_info()
-  
-    def do_example(self, line):
-      self.trueLastCmd = 'example'
-      newNpc = npc.Npc()
-      newNpc.example_dialogue()
-      print("finished", self.trueLastCmd)
 
+        
     def do_help(self,line):
       self.start()
 
     def do_move(self,line):
       self.playerClass.getCurrentPosition(self.currentPlayer.id_jogador)
              
-    def show_player_info(self):  
-      print(f'Nome: {self.currentPlayer.nome}\n' +
-      f'PV(Pontos de vida): {self.currentPlayer.vida}\n' +
-      f'Quantidade de ouro: {self.currentPlayer.qnt_ouro}\n' +
-      f'Você está em: {self.playerClass.getCurrentPosition()}\n' +
-      f'\n\n'
-      )
+    def default(self, line):
+        if self.trueLastCmd == 'move':
+          self.playerClass.moveToSpace(self,line)
+          return None 
+        self.trueLastCmd = ''
 
+    def precmd(self, line):
+        clear()
+        if self.trueLastCmd == '':
+          self.trueLastCmd = self.lastcmd
+        return line
 
 if __name__ == '__main__':
     create_tables()

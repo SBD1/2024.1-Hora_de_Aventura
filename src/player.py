@@ -1,5 +1,7 @@
 from db import connection
-from classes import *
+from classes_dto import *
+from util import *
+
 
 class Player():
   current_region=""
@@ -44,6 +46,5 @@ class Player():
     print("Os destinos disponíveis são:")
     print("0 - Cancelar movimento")
     # TODO: Fazer um loop para printar as opções
-    
     
 
