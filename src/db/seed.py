@@ -24,18 +24,16 @@ def create_tables():
     
     conn_database = Connection()
     if conn_database is not None:
-        cursor = conn_database.cursor
+        
         try:
-            execute_sql_script(cursor, ddl_arquivo)
+            execute_sql_script(self.cursor, ddl_arquivo)
             # print("Tabelas criadas com sucesso!")
             
              # Insere dados
-            execute_sql_script(cursor, dml_arquivo)
+            execute_sql_script(self.cursor, dml_arquivo)
             # print("Dados inseridos com sucesso!")
         except Exception as e:
             print(f"Erro ao criar tabelas: {e}")
-        finally:
-            cursor.close()
     else:
         print("Falha ao conectar ao banco de dados.")
     

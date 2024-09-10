@@ -14,7 +14,7 @@ class Connection:
       if not hasattr(self, 'conn'):
          try:
             self.conn = psycopg2.connect(database="test", host="localhost",user="user",password="password",port="5432")
-            self.cursor 2= self.conn.cursor()
+            self.cursor = self.conn.cursor()
             self.commit = self.conn.commit
             self.rollback = self.conn.rollback
          
