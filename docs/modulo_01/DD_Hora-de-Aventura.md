@@ -3,6 +3,7 @@
 | Versão |    Data    | Descrição               | Autor                                      |
 | :----: | :--------: | ----------------------- | ------------------------------------------ |
 | `1.0`  | 21/07/2024 | Criação do documento DD | [Lucas Macedo](https://github.com/Luckx98) |
+| `2.0`  | 09/09/2024 | Alteracao de dados      | [Lucas Macedo](https://github.com/Luckx98) |
 
 # DD - Dicionário de Dados
 
@@ -92,6 +93,18 @@
 |    defesa     |     int     |   Quantidade de defesa   |       1-400        |          não           |          |                   |
 |     vida      |     int     |    Quantidade de vida    |       1-500        |          não           |          |                   |
 |     drop      |     int     | Item que o inimigo dropa |       1-500        |          sim           |    FK    |                   |
+
+## Entidade: Instancia Inimigo
+
+#### Descrição: A entidade inimigo armazena as características dos inimigos encontrados, como identificador, seu nome, a descrição de como é, a região que se encontra, o dano que ele possui, a quantidade de defesa, sua vida e se ele ao morrer dropa item
+
+#### Observação: Essa tabela possui chave estrangeira das entidades `Região, Item`.
+
+|    Nome Variável     | Tipo |             Descrição              | Valores permitidos | Permite valores nulos? | É chave? | Outras Restrições |
+| :------------------: | :--: | :--------------------------------: | :----------------: | :--------------------: | :------: | ----------------- |
+| id_instancia_inimigo | int  | Identificador da instancia inimigo |       1-500        |          não           |  PK, FK  |                   |
+|        regiao        | int  |       Regiao que se encontra       |       1-500        |          não           |  PK, FK  |                   |
+|        saude         | int  |          Saude do Inimigo          |       1-500        |          nao           |          |                   |
 
 ## Entidade: Item
 
